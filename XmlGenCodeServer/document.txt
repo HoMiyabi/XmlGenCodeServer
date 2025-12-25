@@ -6,7 +6,7 @@
 数据表:
 file:
     id: int 主键自增
-    file_name: varchar 文件名
+    file_name: varchar 文件名，添加普通索引
     file_content: text 文件内容，文本
 
 接口，接口参数都通过json格式传递，返回使用json格式返回，统一Result{Code, Msg, Data}:
@@ -45,6 +45,19 @@ file:
         "Id": 1
     }
     返回 Data: null
+
+复制文件:
+    POST /duplicate_file
+    参数:
+    {
+        "Id":, // 源文件id
+    }
+    返回 Data:
+    {
+        "Id":, // 新文件id
+        "FileName": "新文件名", // 文件名从"{原文件名}_{i}", i = 1开始尝试，直到不重名
+        "FileContent": "文件内容"
+    }
 
 修改文件名:
     POST /update_file_name

@@ -7,6 +7,12 @@ public class AppDbContext : DbContext
 {
     public DbSet<FileEntity> Files => Set<FileEntity>();
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<FileEntity>()
+            .HasIndex(f => f.FileName);
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var dataDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");

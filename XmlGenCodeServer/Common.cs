@@ -12,6 +12,7 @@ public class Result<T>
 
 public record CreateFileRequest();
 public record DeleteFileRequest(int Id);
+public record DuplicateFileRequest(int Id);
 public record UpdateFileNameRequest(int Id, string FileName);
 public record UpdateFileContentRequest(int Id, string FileContent);
 
